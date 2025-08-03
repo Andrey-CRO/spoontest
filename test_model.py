@@ -6,7 +6,7 @@ import random
 model = joblib.load("recipe_recommender.pkl")
 
 # Load recipe dataset (same used in training)
-with open('spoonacular_recipes.json') as f:
+with open('../spoonacular_recipes.json') as f:
     recipes = json.load(f)
 
 # Build lookup
