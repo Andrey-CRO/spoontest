@@ -4,11 +4,17 @@ import joblib
 app = Flask(__name__)
 
 # Load your trained model (ensure recipe_recommender.pkl is in your repl files)
-model = joblib.load("recipe_recommender.pkl")
+print("Files here:", os.listdir('.'))
+try:
+    model = joblib.load("recipe_recommender.pkl")
+except Exception as e:
+    print(f"Error loading model: {e}")
+    raise
 
 @app.route('/predict', methods=['POST'])
 def predict():
     data = request.get_json()
+    print(data)
     bookmarks = data.get("bookmarks", [])
     candidates = data.get("candidates", [])
 
